@@ -1,0 +1,6 @@
+class ConsultaController < ApplicationController
+	def index
+		@campo = params[:campo]
+		@valor = params[:valor]
+	end
+end

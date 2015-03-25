@@ -1,0 +1,50 @@
+
+<h1> Libros Encontrados </h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Autor</th>
+      <th>Editorial</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+ <tbody>
+			<% @libros = Book.all.each do |libro| %>
+			<% if @campo == 'Nombre' %>
+				<% if @valor == libro.name %>
+					<td><%  a = libro.id %></td>
+					<td><%= libro.name %></td>
+					<td><%= libro.author.name %></td>
+					<td><%= libro.editorial.name %></td>
+					<td><%= link_to 'Mostrar', libro %></td>
+				<% end %>
+			<% end %>
+	
+			<% if @campo == 'Autor' %>
+				<% if @valor == libro.author.name%>
+					<td><%= libro.name %></td>
+					<td><%= libro.author.name %></td>
+					<td><%= libro.editorial.name %></td>
+					<td><%= link_to 'Mostrar', libro %></td>
+				<% end %>
+			<% end %>
+
+			<% if @campo == 'Editorial' %>
+				<% if @valor == libro.editorial.name %>
+					<td><%= libro.name %></td>
+					<td><%= libro.author.name %></td>
+					<td><%= libro.editorial.name %></td>
+					<td><%= link_to 'Mostrar', libro %></td>
+				<% end %>
+			<% end %>
+	
+		<% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Regresar', '/menu/main' %>
